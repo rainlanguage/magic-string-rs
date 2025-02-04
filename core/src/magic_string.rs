@@ -811,3 +811,13 @@ impl ToString for MagicString {
     format!("{}{}", str, self.outro)
   }
 }
+
+impl Drop for MagicString {
+  fn drop(&mut self) {
+    // explicitly clear Rc RefCell cyclic references by setting them to
+    // None before dropping to avoid memory leak caused by reference cycles
+    self.first_chunk.borrow_mut().clear();
+    self.last_chunk.borrow_mut().clear();
+    self.last_searched_chunk.borrow_mut().clear();
+  }
+}
