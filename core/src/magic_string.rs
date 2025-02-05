@@ -819,7 +819,13 @@ impl Drop for MagicString {
     self.last_chunk.borrow_mut().clear();
     self.first_chunk.borrow_mut().clear();
     self.last_searched_chunk.borrow_mut().clear();
-    self.chunk_by_end.iter_mut().for_each(|v| v.1.borrow_mut().clear());
-    self.chunk_by_start.iter_mut().for_each(|v| v.1.borrow_mut().clear());
+    self
+      .chunk_by_end
+      .iter_mut()
+      .for_each(|v| v.1.borrow_mut().clear());
+    self
+      .chunk_by_start
+      .iter_mut()
+      .for_each(|v| v.1.borrow_mut().clear());
   }
 }
