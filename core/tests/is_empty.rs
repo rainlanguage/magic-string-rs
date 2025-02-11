@@ -1,6 +1,6 @@
 #[cfg(test)]
 mod empty {
-  use magic_string::{MagicString, OverwriteOptions, Result};
+  use magic_string_rs::{MagicString, OverwriteOptions, Result};
 
   #[test]
   fn should_support_is_empty() -> Result {

@@ -1,6 +1,6 @@
 #[cfg(test)]
 mod sourcemap {
-  use magic_string::{GenerateDecodedMapOptions, MagicString, OverwriteOptions, Result};
+  use magic_string_rs::{GenerateDecodedMapOptions, MagicString, OverwriteOptions, Result};
 
   #[test]
   fn should_generate_a_sourcemap() -> Result {

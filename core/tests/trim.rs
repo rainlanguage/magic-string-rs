@@ -1,6 +1,6 @@
 #[cfg(test)]
 mod trim {
-  use magic_string::{MagicString, OverwriteOptions, Result};
+  use magic_string_rs::{MagicString, OverwriteOptions, Result};
 
   #[test]
   fn should_trim_original_content() -> Result {
@@ -100,7 +100,7 @@ mod trim {
 
 #[cfg(test)]
 mod trim_lines {
-  use magic_string::{MagicString, Result};
+  use magic_string_rs::{MagicString, Result};
 
   #[test]
   fn should_trim_original_content() -> Result {
