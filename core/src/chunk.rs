@@ -181,6 +181,11 @@ impl Chunk {
 
     next_chunk
   }
+
+  pub(crate) fn clear(&mut self) {
+    self.next = None;
+    self.prev = None;
+  }
 }
 
 impl ToString for Chunk {

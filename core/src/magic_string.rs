@@ -79,7 +79,7 @@ impl MagicString {
   ///
   /// Example:
   /// ```
-  /// use magic_string::MagicString;
+  /// use magic_string_rs::MagicString;
   ///
   /// let mut s = MagicString::new("import React from 'react'");
   ///
@@ -113,7 +113,7 @@ impl MagicString {
   ///
   /// Example:
   /// ```
-  /// use magic_string::MagicString;
+  /// use magic_string_rs::MagicString;
   ///
   /// let mut s = MagicString::new("import React from 'react'");
   ///
@@ -134,7 +134,7 @@ impl MagicString {
   ///
   /// Example:
   /// ```
-  /// use magic_string::MagicString;
+  /// use magic_string_rs::MagicString;
   ///
   /// let mut s = MagicString::new("export default React");
   ///
@@ -219,7 +219,7 @@ impl MagicString {
   ///
   /// Example:
   /// ```
-  /// use magic_string::{MagicString, OverwriteOptions};
+  /// use magic_string_rs::{MagicString, OverwriteOptions};
   ///
   ///
   /// let mut s = MagicString::new("abcdefg");
@@ -320,7 +320,7 @@ impl MagicString {
   ///
   /// Example:
   /// ```
-  /// use magic_string::MagicString;
+  /// use magic_string_rs::MagicString;
   ///
   /// let mut s = MagicString::new("  abc  ");
   /// s.trim(None);
@@ -347,7 +347,7 @@ impl MagicString {
   ///
   /// Example:
   /// ```
-  /// use magic_string::MagicString;
+  /// use magic_string_rs::MagicString;
   ///
   /// let mut s = MagicString::new("  abc");
   /// s.trim_start(None);
@@ -379,9 +379,7 @@ impl MagicString {
 
     Chunk::try_each_next(Rc::clone(&self.first_chunk), |chunk| {
       self.last_searched_chunk = Rc::clone(&chunk);
-      if let Err(e) = chunk.borrow_mut().trim_start_regexp(pattern) {
-        return Err(e);
-      }
+      chunk.borrow_mut().trim_start_regexp(pattern)?;
 
       Ok(!chunk.borrow().to_string().is_empty())
     })?;
@@ -405,7 +403,7 @@ impl MagicString {
   ///
   /// Example:
   /// ```
-  /// use magic_string::MagicString;
+  /// use magic_string_rs::MagicString;
   ///
   /// let mut s = MagicString::new("abc  ");
   /// s.trim_end(None);
@@ -434,9 +432,7 @@ impl MagicString {
 
     Chunk::try_each_prev(Rc::clone(&self.last_chunk), |chunk| {
       self.last_searched_chunk = Rc::clone(&chunk);
-      if let Err(e) = chunk.borrow_mut().trim_end_regexp(pattern) {
-        return Err(e);
-      }
+      chunk.borrow_mut().trim_end_regexp(pattern)?;
 
       Ok(!chunk.borrow().to_string().is_empty())
     })?;
@@ -456,7 +452,7 @@ impl MagicString {
   ///
   /// Example:
   /// ```
-  /// use magic_string::MagicString;
+  /// use magic_string_rs::MagicString;
   ///
   /// let mut s = MagicString::new("\n\nabc\n");
   /// s.append("\n");
@@ -477,7 +473,7 @@ impl MagicString {
   ///
   /// Example:
   /// ```
-  /// use magic_string::MagicString;
+  /// use magic_string_rs::MagicString;
   /// let mut s = MagicString::new("abcdefghijkl");
   ///
   /// s.remove(1, 5);
@@ -531,7 +527,7 @@ impl MagicString {
   ///
   /// Example:
   /// ```
-  /// use magic_string::MagicString;
+  /// use magic_string_rs::MagicString;
   ///
   /// let mut s = MagicString::new("");
   ///
@@ -562,7 +558,7 @@ impl MagicString {
   ///
   /// Example
   /// ```
-  /// use magic_string::{MagicString, GenerateDecodedMapOptions};
+  /// use magic_string_rs::{MagicString, GenerateDecodedMapOptions};
   ///
   /// let mut s = MagicString::new("export default React");
   /// s.prepend("import React from 'react'\n");
@@ -610,7 +606,7 @@ impl MagicString {
   /// Generates a version 3 sourcemap. All options are optional, see `GenerateDecodedMapOptions` for detailed document.
   ///
   /// ```
-  /// use magic_string::{MagicString, GenerateDecodedMapOptions};
+  /// use magic_string_rs::{MagicString, GenerateDecodedMapOptions};
   ///
   /// let mut s = MagicString::new("export default React");
   /// s.prepend("import React from 'react'\n");
@@ -636,7 +632,7 @@ impl MagicString {
   ///
   /// Example:
   /// ```
-  /// use magic_string::MagicString;
+  /// use magic_string_rs::MagicString;
   /// let mut s = MagicString::new("abcdefghijkl");
   /// s._move(3, 6, 9);
   /// assert_eq!(s.to_string(), "abcghidefjkl");
@@ -793,7 +789,7 @@ impl ToString for MagicString {
   ///
   /// Example:
   /// ```
-  /// use magic_string::MagicString;
+  /// use magic_string_rs::MagicString;
   ///
   /// let mut s = MagicString::new("abc");
   ///
@@ -809,5 +805,23 @@ impl ToString for MagicString {
     .unwrap();
 
     format!("{}{}", str, self.outro)
+  }
+}
+
+impl Drop for MagicString {
+  fn drop(&mut self) {
+    // explicitly clear Rc RefCell cyclic references by setting them to
+    // None before dropping to avoid memory leak caused by reference cycles
+    self.last_chunk.borrow_mut().clear();
+    self.first_chunk.borrow_mut().clear();
+    self.last_searched_chunk.borrow_mut().clear();
+    self
+      .chunk_by_end
+      .iter_mut()
+      .for_each(|v| v.1.borrow_mut().clear());
+    self
+      .chunk_by_start
+      .iter_mut()
+      .for_each(|v| v.1.borrow_mut().clear());
   }
 }

@@ -1,6 +1,6 @@
 #[cfg(test)]
 mod remove {
-  use magic_string::{MagicString, OverwriteOptions, Result};
+  use magic_string_rs::{MagicString, OverwriteOptions, Result};
 
   #[test]
   fn should_remove_characters_from_the_original_string() -> Result {
