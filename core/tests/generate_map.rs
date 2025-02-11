@@ -136,11 +136,11 @@ mod sourcemap {
     let map = s.generate_decoded_map(options.to_owned())?;
 
     assert_eq!(map.mappings.len(), 1);
-    assert_eq!(map.mappings.get(0).unwrap().len(), 3);
+    assert_eq!(map.mappings.first().unwrap().len(), 3);
 
     let map = s.generate_map(options)?;
 
-    assert_eq!(map.mappings.split(",").collect::<Vec<_>>().len(), 3);
+    assert_eq!(map.mappings.split(',').collect::<Vec<_>>().len(), 3);
 
     Ok(())
   }
