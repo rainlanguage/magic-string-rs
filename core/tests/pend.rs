@@ -1,6 +1,6 @@
 #[cfg(test)]
 mod pend {
-  use magic_string_rs::{MagicString, Result};
+  use magic_string_rain::{MagicString, Result};
 
   #[test]
   fn preserves_intended_order() -> Result {
@@ -56,7 +56,7 @@ mod pend {
 
 #[cfg(test)]
 mod prepend {
-  use magic_string_rs::{MagicString, Result};
+  use magic_string_rain::{MagicString, Result};
 
   #[test]
   fn should_prepend_content() -> Result {
@@ -87,7 +87,7 @@ mod prepend {
 
 #[cfg(test)]
 mod prepend_left {
-  use magic_string_rs::{MagicString, Result};
+  use magic_string_rain::{MagicString, Result};
 
   #[test]
   fn should_return_self() -> Result {
@@ -105,7 +105,7 @@ mod prepend_left {
 
 #[cfg(test)]
 mod prepend_right {
-  use magic_string_rs::{MagicString, Result};
+  use magic_string_rain::{MagicString, Result};
 
   #[test]
   fn should_return_self() -> Result {
@@ -123,7 +123,7 @@ mod prepend_right {
 
 #[cfg(test)]
 mod append {
-  use magic_string_rs::{MagicString, Result};
+  use magic_string_rain::{MagicString, Result};
 
   #[test]
   fn should_prepend_content() -> Result {
@@ -154,7 +154,7 @@ mod append {
 
 #[cfg(test)]
 mod append_left {
-  use magic_string_rs::{MagicString, Result};
+  use magic_string_rain::{MagicString, Result};
 
   #[test]
   fn should_return_self() -> Result {
@@ -172,7 +172,7 @@ mod append_left {
 
 #[cfg(test)]
 mod append_right {
-  use magic_string_rs::{MagicString, Result};
+  use magic_string_rain::{MagicString, Result};
 
   #[test]
   fn should_return_self() -> Result {

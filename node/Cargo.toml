@@ -11,7 +11,7 @@ version = "0.1.0"
 crate-type = ["cdylib"]
 
 [dependencies]
-magic_string_rs = {path = "../core", features = ["node-api"]}
+magic_string_rain = {path = "../core", features = ["node-api"]}
 napi = {version = "2.0.1", features = ["napi3", "serde-json"]}
 napi-derive = "2.0.1"
 serde = {version = "1", features = ["derive"]}

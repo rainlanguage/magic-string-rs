@@ -5,10 +5,10 @@ extern crate napi_derive;
 use napi::bindgen_prelude::*;
 use napi::Result;
 
-// use magic_string::SourceMap;
+// use magic_string_rain::SourceMap;
 
 #[napi]
-pub struct MagicString(magic_string::MagicString);
+pub struct MagicString(magic_string_rain::MagicString);
 
 pub fn create_external<T>(value: T) -> External<T> {
   External::new(value)
@@ -18,7 +18,7 @@ pub fn create_external<T>(value: T) -> External<T> {
 impl MagicString {
   #[napi(constructor)]
   pub fn new(original_str: String) -> Self {
-    MagicString(magic_string::MagicString::new(original_str.as_str()))
+    MagicString(magic_string_rain::MagicString::new(original_str.as_str()))
   }
 
   #[napi]
@@ -68,7 +68,7 @@ impl MagicString {
     start: i64,
     end: i64,
     content: String,
-    options: magic_string::OverwriteOptions,
+    options: magic_string_rain::OverwriteOptions,
   ) -> Result<&Self> {
     self.0.overwrite(start, end, content.as_str(), options)?;
     Ok(self)
@@ -138,7 +138,7 @@ impl MagicString {
   #[napi(skip_typescript)]
   pub fn to_sourcemap_string(
     &self,
-    options: Option<magic_string::GenerateDecodedMapOptions>,
+    options: Option<magic_string_rain::GenerateDecodedMapOptions>,
   ) -> Result<String> {
     Ok(
       self
@@ -151,7 +151,7 @@ impl MagicString {
   #[napi(skip_typescript)]
   pub fn to_sourcemap_url(
     &self,
-    options: Option<magic_string::GenerateDecodedMapOptions>,
+    options: Option<magic_string_rain::GenerateDecodedMapOptions>,
   ) -> Result<String> {
     Ok(self.0.generate_map(options.unwrap_or_default())?.to_url()?)
   }
@@ -162,7 +162,7 @@ impl MagicString {
   )]
   pub fn generate_decoded_map(
     &self,
-    options: Option<magic_string::GenerateDecodedMapOptions>,
+    options: Option<magic_string_rain::GenerateDecodedMapOptions>,
   ) -> Result<String> {
     let decoded = self.0.generate_decoded_map(options.unwrap_or_default())?;
     Ok(serde_json::to_string(&decoded)?)

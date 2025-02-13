@@ -1,6 +1,6 @@
 #[cfg(test)]
 mod _move {
-  use magic_string_rs::{MagicString, OverwriteOptions, Result};
+  use magic_string_rain::{MagicString, OverwriteOptions, Result};
 
   #[test]
   fn should_move_from_start() -> Result {
