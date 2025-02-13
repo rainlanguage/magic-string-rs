@@ -782,6 +782,7 @@ impl MagicString {
   }
 }
 
+#[allow(clippy::to_string_trait_impl)]
 impl ToString for MagicString {
   /// ## To string
   ///

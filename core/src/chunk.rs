@@ -188,6 +188,7 @@ impl Chunk {
   }
 }
 
+#[allow(clippy::to_string_trait_impl)]
 impl ToString for Chunk {
   fn to_string(&self) -> String {
     format!("{}{}{}", self.intro, self.content, self.outro)
