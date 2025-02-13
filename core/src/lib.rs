@@ -1,4 +1,5 @@
 #![deny(clippy::all)]
+#![allow(clippy::assigning_clones)]
 
 #[macro_use]
 extern crate serde;
