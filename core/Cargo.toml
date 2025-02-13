@@ -3,7 +3,7 @@ authors = ["h-a-n-a <andywangsy@gmail.com>"]
 description = "magic string"
 edition = "2021"
 license = "MIT"
-name = "magic_string_rs"
+name = "magic_string_rain"
 repository = "https://github.com/rouzwelt/magic-string-rs"
 version = "0.3.4"
 

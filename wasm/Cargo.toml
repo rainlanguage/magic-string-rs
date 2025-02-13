@@ -11,5 +11,5 @@ publish = false
 crate-type = ["cdylib", "rlib"]
 
 [dependencies]
-magic_string = {path = "../core"}
+magic_string_rain = {path = "../core"}
 wasm-bindgen = "0.2.63"

@@ -79,7 +79,7 @@ impl MagicString {
   ///
   /// Example:
   /// ```
-  /// use magic_string_rs::MagicString;
+  /// use magic_string_rain::MagicString;
   ///
   /// let mut s = MagicString::new("import React from 'react'");
   ///
@@ -113,7 +113,7 @@ impl MagicString {
   ///
   /// Example:
   /// ```
-  /// use magic_string_rs::MagicString;
+  /// use magic_string_rain::MagicString;
   ///
   /// let mut s = MagicString::new("import React from 'react'");
   ///
@@ -134,7 +134,7 @@ impl MagicString {
   ///
   /// Example:
   /// ```
-  /// use magic_string_rs::MagicString;
+  /// use magic_string_rain::MagicString;
   ///
   /// let mut s = MagicString::new("export default React");
   ///
@@ -219,7 +219,7 @@ impl MagicString {
   ///
   /// Example:
   /// ```
-  /// use magic_string_rs::{MagicString, OverwriteOptions};
+  /// use magic_string_rain::{MagicString, OverwriteOptions};
   ///
   ///
   /// let mut s = MagicString::new("abcdefg");
@@ -320,7 +320,7 @@ impl MagicString {
   ///
   /// Example:
   /// ```
-  /// use magic_string_rs::MagicString;
+  /// use magic_string_rain::MagicString;
   ///
   /// let mut s = MagicString::new("  abc  ");
   /// s.trim(None);
@@ -347,7 +347,7 @@ impl MagicString {
   ///
   /// Example:
   /// ```
-  /// use magic_string_rs::MagicString;
+  /// use magic_string_rain::MagicString;
   ///
   /// let mut s = MagicString::new("  abc");
   /// s.trim_start(None);
@@ -403,7 +403,7 @@ impl MagicString {
   ///
   /// Example:
   /// ```
-  /// use magic_string_rs::MagicString;
+  /// use magic_string_rain::MagicString;
   ///
   /// let mut s = MagicString::new("abc  ");
   /// s.trim_end(None);
@@ -452,7 +452,7 @@ impl MagicString {
   ///
   /// Example:
   /// ```
-  /// use magic_string_rs::MagicString;
+  /// use magic_string_rain::MagicString;
   ///
   /// let mut s = MagicString::new("\n\nabc\n");
   /// s.append("\n");
@@ -473,7 +473,7 @@ impl MagicString {
   ///
   /// Example:
   /// ```
-  /// use magic_string_rs::MagicString;
+  /// use magic_string_rain::MagicString;
   /// let mut s = MagicString::new("abcdefghijkl");
   ///
   /// s.remove(1, 5);
@@ -527,7 +527,7 @@ impl MagicString {
   ///
   /// Example:
   /// ```
-  /// use magic_string_rs::MagicString;
+  /// use magic_string_rain::MagicString;
   ///
   /// let mut s = MagicString::new("");
   ///
@@ -558,7 +558,7 @@ impl MagicString {
   ///
   /// Example
   /// ```
-  /// use magic_string_rs::{MagicString, GenerateDecodedMapOptions};
+  /// use magic_string_rain::{MagicString, GenerateDecodedMapOptions};
   ///
   /// let mut s = MagicString::new("export default React");
   /// s.prepend("import React from 'react'\n");
@@ -606,7 +606,7 @@ impl MagicString {
   /// Generates a version 3 sourcemap. All options are optional, see `GenerateDecodedMapOptions` for detailed document.
   ///
   /// ```
-  /// use magic_string_rs::{MagicString, GenerateDecodedMapOptions};
+  /// use magic_string_rain::{MagicString, GenerateDecodedMapOptions};
   ///
   /// let mut s = MagicString::new("export default React");
   /// s.prepend("import React from 'react'\n");
@@ -632,7 +632,7 @@ impl MagicString {
   ///
   /// Example:
   /// ```
-  /// use magic_string_rs::MagicString;
+  /// use magic_string_rain::MagicString;
   /// let mut s = MagicString::new("abcdefghijkl");
   /// s._move(3, 6, 9);
   /// assert_eq!(s.to_string(), "abcghidefjkl");
@@ -789,7 +789,7 @@ impl ToString for MagicString {
   ///
   /// Example:
   /// ```
-  /// use magic_string_rs::MagicString;
+  /// use magic_string_rain::MagicString;
   ///
   /// let mut s = MagicString::new("abc");
   ///

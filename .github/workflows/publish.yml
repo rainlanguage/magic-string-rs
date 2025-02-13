@@ -37,8 +37,8 @@ jobs:
 
       - name: Git Config
         run: |
-          git config --global user.email "github-actions[bot]@users.noreply.github.com"
-          git config --global user.name "GitHub Action"
+          git config --global user.email "${{ secrets.CI_GIT_EMAIL }}"
+          git config --global user.name "${{ secrets.CI_GIT_USER }}"
 
       - name: Publish to crates.io
         run: nix develop -c cargo release --no-confirm --execute --no-tag ${{ inputs.version-level }}

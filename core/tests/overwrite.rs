@@ -1,6 +1,6 @@
 #[cfg(test)]
 mod overwrite {
-  use magic_string_rs::{MagicString, OverwriteOptions, Result};
+  use magic_string_rain::{MagicString, OverwriteOptions, Result};
 
   #[test]
   fn should_replace_characters() -> Result {

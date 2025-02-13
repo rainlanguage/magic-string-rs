@@ -50,7 +50,7 @@ impl SourceMap {
   ///
   /// Example:
   /// ```
-  /// use magic_string_rs::{MagicString, GenerateDecodedMapOptions, SourceMap};
+  /// use magic_string_rain::{MagicString, GenerateDecodedMapOptions, SourceMap};
   ///
   /// let mut s = MagicString::new("export default React");
   /// s.prepend("import React from 'react'\n");
