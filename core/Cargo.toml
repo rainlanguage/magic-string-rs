@@ -4,7 +4,7 @@ description = "magic string"
 edition = "2021"
 license = "MIT"
 name = "magic_string_rain"
-repository = "https://github.com/rouzwelt/magic-string-rs"
+repository = "https://github.com/rainlanguage/magic-string-rs"
 version = "0.3.4"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
